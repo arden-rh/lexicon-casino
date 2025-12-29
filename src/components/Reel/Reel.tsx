@@ -1,72 +1,79 @@
 import styles from "./Reel.module.scss";
 
 interface ReelProps {
-	id?: number;
+	id: number;
+	isSpinning: boolean;
+	currentIndex: number;
 }
 
 const imageContent = [
 	{
+		id: 0,
+		src: "src/assets/images/slotImages/cherry.png",
+		alt: "Cherry",
+	},
+	{
 		id: 1,
-		imgSrc: "src/assets/images/slotImages/cherry.png",
-		imgAlt: "Cherry",
+		src: "src/assets/images/slotImages/lemon.png",
+		alt: "Lemon",
 	},
 	{
 		id: 2,
-		imgSrc: "src/assets/images/slotImages/lemon.png",
-		imgAlt: "Lemon",
+		src: "src/assets/images/slotImages/orange.png",
+		alt: "Orange",
 	},
+	{ id: 3, src: "src/assets/images/slotImages/plum.png", alt: "Plum" },
+	{ id: 4, src: "src/assets/images/slotImages/bell.png", alt: "Bell" },
+	{ id: 5, src: "src/assets/images/slotImages/star.png", alt: "Star" },
 	{
-		id: 3,
-		imgSrc: "src/assets/images/slotImages/orange.png",
-		imgAlt: "Orange",
+		id: 6,
+		src: "src/assets/images/slotImages/seven.png",
+		alt: "Seven",
 	},
-	{ id: 4, imgSrc: "src/assets/images/slotImages/plum.png", imgAlt: "Plum" },
-	{ id: 5, imgSrc: "src/assets/images/slotImages/bell.png", imgAlt: "Bell" },
-	{ id: 6, imgSrc: "src/assets/images/slotImages/star.png", imgAlt: "Star" },
+	{ id: 7, src: "src/assets/images/slotImages/wild.png", alt: "Wild" },
+	{ id: 8, src: "src/assets/images/slotImages/bar.png", alt: "Bar" },
 	{
-		id: 7,
-		imgSrc: "src/assets/images/slotImages/seven.png",
-		imgAlt: "Seven",
+		id: 9,
+		src: "src/assets/images/slotImages/dollar.png",
+		alt: "Dollar",
 	},
-	{ id: 8, imgSrc: "src/assets/images/slotImages/wild.png", imgAlt: "Wild" },
-	{ id: 9, imgSrc: "src/assets/images/slotImages/bar.png", imgAlt: "Bar" },
 	{
 		id: 10,
-		imgSrc: "src/assets/images/slotImages/dollar.png",
-		imgAlt: "Dollar",
+		src: "src/assets/images/slotImages/diamond.png",
+		alt: "Diamond",
 	},
 	{
 		id: 11,
-		imgSrc: "src/assets/images/slotImages/diamond.png",
-		imgAlt: "Diamond",
-	},
-	{
-		id: 12,
-		imgSrc: "src/assets/images/slotImages/crown.png",
-		imgAlt: "Crown",
+		src: "src/assets/images/slotImages/crown.png",
+		alt: "Crown",
 	},
 ];
 
-const Reel: React.FC<ReelProps> = ({ id }) => {
+const Reel: React.FC<ReelProps> = ({ id, isSpinning, currentIndex }) => {
+	// Calculate the translateY position based on current image
+	const translateY = -currentIndex * 250; // Each image is 250px tall
 
-	const handleSpin = () => {
-		// Logic to spin the reel and randomly select an image
-
-	}
-
+	// Debug: Log what image should be showing
+	const currentImage = imageContent[currentIndex];
+	console.log(`Reel ${id}: index=${currentIndex}, showing=${currentImage?.alt || 'undefined'}`);
 
 	return (
 		<div className={styles.reel} id={`reel-${id}`}>
 			<div className={styles.imageContainer}>
-				{imageContent.map((image) => (
-					<div
-						className={styles.slot}
-						key={image.id}
-						id={`slot-${image.id}`}
-					>
-						<img src={image.imgSrc} alt={image.imgAlt} id={`img-${image.id}`} />
-					</div>
-				))}
+				<div
+					className={`${styles.reelStrip} ${isSpinning ? styles.spinning : ''}`}
+					style={{ transform: `translateY(${translateY}px)` }}
+				>
+					{imageContent.map((image) => (
+						<div
+							key={image.id}
+							id={`slot-${image.id}`}
+							className={styles.slotItem}
+						>
+							<img src={image.src} alt={image.alt} />
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	);
