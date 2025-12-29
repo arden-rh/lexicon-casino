@@ -1,0 +1,19 @@
+@use "sass:map";
+
+// Breakpoints
+$breakpoints: (
+  "small":  576px,
+  "medium": 768px,
+  "large":  992px,
+  "xlarge": 1200px
+);
+
+// The Mixin
+@mixin respond-to($breakpoint) {
+  // Get the value from the map
+  $value: map.get($breakpoints, $breakpoint);
+
+  @media (min-width: $value) {
+    @content;
+  }
+}
