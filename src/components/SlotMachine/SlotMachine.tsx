@@ -5,17 +5,12 @@ import styles from "./SlotMachine.module.scss";
 const SlotMachine = () => {
 	const [reelIndices, setReelIndices] = useState([0, 0, 0]);
 	const [isSpinning, setIsSpinning] = useState(false);
-	const [results, setResults] = useState([0, 0, 0]);
 
-	const checkForWin = () => {
-		console.log("Checking matching results:", results);
-		console.log("reel 1", reelIndices[0]);
-		console.log("reel 2", reelIndices[1]);
-		console.log("reel 3", reelIndices[2]);
+	const checkForWin = (results: number[]) => {
 
 		if (
-			reelIndices[0] === reelIndices[1] &&
-			reelIndices[1] === reelIndices[2]
+			results[0] === results[1] &&
+			results[1] === results[2]
 		) {
 			console.log("🎉 WINNER! All reels match!");
 			// Add win logic here (update score, show animation, etc.)
@@ -23,9 +18,9 @@ const SlotMachine = () => {
 		}
 
 		if (
-			reelIndices[0] === reelIndices[1] ||
-			reelIndices[0] === reelIndices[2] ||
-			reelIndices[1] === reelIndices[2]
+			results[0] === results[1] ||
+			results[0] === results[2] ||
+			results[1] === results[2]
 		) {
 			console.log("😊 Small win! Two reels match!");
 			// Add small win logic here (update score, show animation, etc.)
@@ -42,11 +37,12 @@ const SlotMachine = () => {
 		setIsSpinning(true);
 
 		// Decide final results for all reels upfront
-		setResults([
+		const finalResults = [
 			Math.floor(Math.random() * 12),
 			Math.floor(Math.random() * 12),
 			Math.floor(Math.random() * 12),
-		]);
+		];
+
 		// Animate spinning with rapid index changes
 		let spinCount = 0;
 		const spinInterval = setInterval(() => {
@@ -61,10 +57,10 @@ const SlotMachine = () => {
 			if (spinCount >= 20) {
 				clearInterval(spinInterval);
 				// Set final results
-				setReelIndices(results);
+				setReelIndices(finalResults);
 				setIsSpinning(false);
 				// Check for win after animation completes
-				setTimeout(() => checkForWin(), 500);
+				setTimeout(() => checkForWin(finalResults), 500);
 			}
 		}, 100);
 	};
