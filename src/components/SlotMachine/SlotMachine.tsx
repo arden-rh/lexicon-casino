@@ -36,7 +36,7 @@ const SlotMachine = () => {
 
 		setIsSpinning(true);
 
-		// Decide final results for all reels upfront
+		// Decide final results for all reels
 		const finalResults = [
 			Math.floor(Math.random() * 12),
 			Math.floor(Math.random() * 12),
