@@ -1,0 +1,24 @@
+.buttonLink {
+	padding: 10px 20px;
+	font-size: 1.75rem;
+	font-family: $font-buttons;
+	letter-spacing: 0.15rem;
+	text-decoration: none;
+	border: none;
+	border-radius: 20px;
+	background: #9c0202;
+	background: linear-gradient(
+		0deg,
+		rgba(156, 2, 2, 1) 0%,
+		rgba(217, 13, 13, 1) 50%,
+		rgba(156, 2, 2, 1) 100%
+	);
+	color: #ffffff;
+	cursor: pointer;
+	box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.75);
+	text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.5);
+
+	&:hover {
+		filter: brightness(0.85);
+	}
+}

@@ -1,7 +1,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
@@ -12,13 +12,8 @@ body {
 	justify-content: center;
 	min-width: 320px;
 	min-height: 100vh;
-	font-family: Arial, sans-serif;
+	font-family: $font-body;
 	background: #d15d04;
-	background: linear-gradient(
-		0deg,
-		#d15d04 0%,
-		#d96c0d 50%,
-		#f2a711 100%
-	);
+	background: linear-gradient(0deg, #d15d04 0%, #d96c0d 50%, #f2a711 100%);
 	color: #ecf0f1;
 }

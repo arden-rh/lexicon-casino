@@ -1,13 +1,14 @@
+import ButtonLink from "@/components/ButtonLink/ButtonLink";
 import styles from "./Home.module.scss";
 
 const Home = () => {
 	return (
 		<div className={styles.home}>
-			<h1>Welcome to Casino Slots</h1>
-			<p>Your ultimate destination for thrilling slot games and big wins!</p>
-			<div>
-				<a href="/game">Play Now</a>
-				<button>Add Coins</button>
+			<h2>Welcome to Casino Nova</h2>
+			<p className="pageIntro">Your ultimate destination for thrilling slot games and big wins!</p>
+			<div className={styles.linkContainer}>
+				<ButtonLink link="/game" text="Play Now" />
+				<ButtonLink link="/balance" text="Check Balance" />
 			</div>
 
 		</div>
