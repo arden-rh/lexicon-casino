@@ -1,9 +1,19 @@
 import { useState } from "react";
 import Reel from "../Reel/Reel";
 import styles from "./SlotMachine.module.scss";
-import { isBigWin, isRoyalFlush, isSmallWin } from "./gameLogic";
+import {
+	SPIN_COST,
+	ROYAL_FLUSH_PAYOUT,
+	BIG_WIN_PAYOUT,
+	SMALL_WIN_PAYOUT,
+	isRoyalFlush,
+	isBigWin,
+	isSmallWin,
+} from "./gameLogic";
+import { useCoin } from "../../contexts/CoinContext";
 
 const SlotMachine = () => {
+	const { coins, subtractCoins, addCoins } = useCoin();
 	const [reelIndices, setReelIndices] = useState([0, 0, 0]);
 	const [isSpinning, setIsSpinning] = useState(false);
 
@@ -13,21 +23,21 @@ const SlotMachine = () => {
 	const checkForWin = (results: number[]) => {
 		if (isRoyalFlush(results)) {
 			console.log("👑 ROYAL FLUSH! Jackpot!");
-			// Add royal flush logic here (update score, show animation, etc.)
+			addCoins(ROYAL_FLUSH_PAYOUT);
 			setSpinLosses([]); // Reset spin losses after jackpot
 			return true;
 		}
 
 		if (isBigWin(results)) {
 			console.log("🎉 WINNER! All reels match!");
-			// Add win logic here (update score, show animation, etc.)
+			addCoins(BIG_WIN_PAYOUT);
 			setSpinLosses([]); // Reset spin losses after big win
 			return true;
 		}
 
 		if (isSmallWin(results)) {
 			console.log("😊 Small win! Two reels match!");
-			// Add small win logic here (update score, show animation, etc.)
+			addCoins(SMALL_WIN_PAYOUT);
 			setSpinLosses([]); // Reset spin losses after small win
 			return true;
 		}
@@ -40,6 +50,12 @@ const SlotMachine = () => {
 
 	const handleSpinAll = (isRoyalFlushTest = false) => {
 		if (isSpinning) return; // Prevent multiple spins at once
+
+		// Check if player has enough coins
+		if (!subtractCoins(SPIN_COST)) {
+			alert(`Not enough coins! You need ${SPIN_COST} coins to spin.`);
+			return;
+		}
 
 		setIsSpinning(true);
 
@@ -88,7 +104,7 @@ const SlotMachine = () => {
 
 	return (
 		<div className={styles.slotMachine}>
-			<h2>Royal Spin</h2>
+			<h3>Royal Spin</h3>
 			<div className={styles.reelsContainer}>
 				<Reel
 					id={1}
@@ -108,11 +124,11 @@ const SlotMachine = () => {
 			</div>
 			<div className={styles.buttonsContainer}>
 				<button
-					className={styles.spinButton}
-					onClick={() => handleSpinAll(false)}
-					disabled={isSpinning}
+					className={`${styles.spinButton} ${styles.testButton}`}
+					onClick={() => handleSpinAll(true)}
+					disabled={isSpinning || coins < SPIN_COST}
 				>
-					{isSpinning ? "SPINNING" : "SPIN"}
+					{isSpinning ? "SPINNING" : `SPIN (${SPIN_COST} coins)`}
 				</button>
 				<button
 					className={`${styles.spinButton} ${styles.testButton}`}

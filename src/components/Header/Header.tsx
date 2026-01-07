@@ -1,11 +1,19 @@
 import styles from "./Header.module.scss";
+import { useCoin } from "../../contexts/CoinContext";
 
-const Header: React.FC = () => {
+const Header = () => {
+	const { coins } = useCoin();
+
 	return (
 		<header className={styles.header}>
-			<div>Casino Slots</div>
+			<h1>Casino Nova</h1>
 			<nav className={styles.nav}>
-				<a href="/">Home</a> | <a href="/game">Game</a>
+				<span className={styles.links}>
+					<a href="/">Home</a> | <a href="/game">Game</a>
+				</span>
+				<a href="/balance" className={styles.coinBalance}>
+					<span>{coins} 🪙</span>
+				</a>
 			</nav>
 		</header>
 	);
