@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	display: flex;
@@ -7,19 +13,12 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	font-family: Arial, sans-serif;
-	background: #020024;
-	background: linear-gradient(
-		0deg,
-		rgba(2, 0, 36, 1) 0%,
-		rgba(54, 9, 121, 1) 60%,
-		rgba(133, 0, 173, 1) 100%
-	);
 	background: #d15d04;
 	background: linear-gradient(
 		0deg,
-		rgba(209, 93, 4, 1) 0%,
-		rgba(217, 108, 13, 1) 50%,
-		rgba(242, 167, 17, 1) 100%
+		#d15d04 0%,
+		#d96c0d 50%,
+		#f2a711 100%
 	);
 	color: #ecf0f1;
 }
