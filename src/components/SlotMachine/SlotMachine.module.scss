@@ -1,10 +1,101 @@
 .slotMachine {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	// background: #060663;
+	// background: linear-gradient(
+	// 	0deg,
+	// 	rgba(6, 6, 99, 1) 0%,
+	// 	rgba(22, 9, 121, 1) 50%,
+	// 	rgba(31, 0, 143, 1) 100%
+	// );
+	padding: 20px 10px;
+	border-radius: 20px;
+	box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.75);
+
+	h2 {
+		margin-bottom: 20px;
+		font-size: 3rem;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+		font-family: $font-buttons;
+		letter-spacing: 0.15rem;
+	}
 
 	.reelsContainer {
 		display: flex;
 		gap: 5px;
 		margin-bottom: 20px;
+		background-color: #9c0202;
+		background: #d90d0d;
+		background: linear-gradient(
+			0deg,
+			rgba(217, 13, 13, 1) 8%,
+			rgba(156, 2, 2, 1) 50%
+		);
+		padding: 15px;
+		border-radius: 15px;
+	}
+
+	.buttonsContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+		width: 100%;
+
+		.spinButton {
+			width: fit-content;
+			height: 75px;
+			padding: 10px 20px;
+			margin: 5px;
+			font-size: 2.25rem;
+			line-height: 2rem;
+			font-family: $font-buttons;
+			letter-spacing: 0.15rem;
+			// border: 5px solid #ef8c0b;
+			//border: 2px solid #000;
+			border: none;
+			border-radius: 20px;
+			// background: #f29924;
+			// background: linear-gradient(
+			// 	0deg,
+			// 	rgba(242, 153, 36, 1) 8%,
+			// 	rgba(234, 58, 45, 1) 50%
+			// );
+			background: #f29924;
+			background: linear-gradient(
+				0deg,
+				rgba(242, 153, 36, 1) 0%,
+				rgba(234, 58, 45, 1) 50%,
+				rgba(242, 153, 36, 1) 100%
+			);
+			background: #9c0202;
+			background: linear-gradient(
+				0deg,
+				rgba(156, 2, 2, 1) 0%,
+				rgba(217, 13, 13, 1) 50%,
+				rgba(156, 2, 2, 1) 100%
+			);
+			color: #ffffff;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.75);
+			text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.5);
+
+			&:disabled {
+				background-color: #a69e95;
+				cursor: not-allowed;
+			}
+
+			&:hover:not(:disabled) {
+				background-color: #cc432e;
+			}
+		}
+		.testButton {
+			font-size: 1rem;
+			padding: 8px 16px;
+			margin-left: 10px;
+			border-radius: 10px;
+			height: fit-content;
+		}
 	}
 }

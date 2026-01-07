@@ -13,9 +13,6 @@ const Reel: React.FC<ReelProps> = ({ id, isSpinning, currentIndex }) => {
 	// Calculate the translateY position based on current image
 	const translateY = -currentIndex * 125;
 
-	const currentImage = slotSymbols[currentIndex];
-	console.log(`Reel ${id}: index=${currentIndex}, showing=${currentImage?.alt || 'undefined'}`);
-
 	return (
 		<div className={styles.reel} id={`reel-${id}`}>
 			<div className={styles.imageContainer}>
