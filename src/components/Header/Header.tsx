@@ -12,7 +12,7 @@ const Header = () => {
 					<a href="/">Home</a> | <a href="/game">Game</a>
 				</span>
 				<a href="/balance" className={styles.coinBalance}>
-					<span>{coins} 🪙</span>
+					<span>{coins} 💎</span>
 				</a>
 			</nav>
 		</header>

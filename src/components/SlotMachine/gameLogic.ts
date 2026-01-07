@@ -4,9 +4,9 @@ export const ROYAL_FLUSH_PAYOUT = 500;
 export const BIG_WIN_PAYOUT = 100;
 export const SMALL_WIN_PAYOUT = 20;
 
-export const smallWinMessage = "Congratulations! You won a small prize!";
-export const bigWinMessage = "Amazing! You hit a big win!";
-export const royalFlushMessage = "Jackpot! Royal Flush! You're a legend!";
+export const smallWinMessage = "Congratulations! You won 20 coins!";
+export const bigWinMessage = "Amazing! You hit a big win of 100 coins!";
+export const royalFlushMessage = "Royal Flush! You're a legend and 500 coins richer!";
 
 // Conditions for different win types
 export const isSmallWin = (results: number[]) =>
@@ -19,3 +19,7 @@ export const isBigWin = (results: number[]) =>
 
 export const isRoyalFlush = (results: number[]) =>
 	results.every((index) => index >= 1 && index <= 3);
+
+export const isJokerJackpot = (results: number[]) => {
+	return results.every((index) => index === 0);
+}
