@@ -1,3 +1,7 @@
+// Todo:
+// - Add responsive design for different screen sizes (wide on medium and up)
+// - Improve accessibility features
+
 .slotMachine {
 	display: flex;
 	flex-direction: column;
@@ -10,24 +14,26 @@
 		#f3cb7f 75%,
 		#e29b17 100%
 	);
-	padding: 20px 10px;
+	padding: 15px;
 	border-radius: 20px;
 	box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.75);
 	border: 5px solid #9c0202;
 
-	h3 {
-		margin-bottom: 20px;
-		font-size: 2.5rem;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-		letter-spacing: 0.15rem;
-		color: #c00909;
-		font-family: "Bevan", serif;
-		font-weight: 400;
-		font-style: italic;
+	@include respond-to("medium") {
+		max-width: 400px;
+	}
+
+	.royalSpinImage {
+		width: 100%;
+		max-width: 600px;
+		height: auto;
+		margin-bottom: 1rem;
 	}
 
 	.reelsContainer {
 		display: flex;
+		justify-content: center;
+		width: 100%;
 		gap: 5px;
 		margin-bottom: 20px;
 		background: #d90d0d;
@@ -37,7 +43,11 @@
 	}
 
 	.gameMessageContainer {
-		width: 100%;;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 4.5rem;
 		font-size: 1.25rem;
 		font-weight: 600;
 		margin-bottom: 15px;

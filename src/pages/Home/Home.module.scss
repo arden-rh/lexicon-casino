@@ -3,14 +3,79 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	height: 100vh;
 	text-align: center;
 	gap: 20px;
 
+	h3 {
+		font-size: 1.35rem;
+		margin: 1rem 0 0;
+
+		@include respond-to("medium") {
+			font-size: 1.5rem;
+			margin-top: 1rem;
+		}
+	}
+
+	p {
+		@include respond-to("medium") {
+			font-size: 1rem;
+		}
+	}
+
 	.linkContainer {
-		margin-top: 20px;
 		display: flex;
 		flex-direction: column;
 		gap: 15px;
+
+		.imageLinks {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+
+			@include respond-to("medium") {
+				flex-direction: row;
+				justify-content: center;
+			}
+
+			.imageLink {
+				display: inline-block;
+				border-radius: 15px;
+				overflow: hidden;
+				cursor: pointer;
+
+				img {
+					width: 90%;
+					height: auto;
+					transition: transform 0.3s ease;
+
+					@include respond-to("medium") {
+						height: 350px;
+						object-fit: cover;
+						width: auto;
+					}
+				}
+
+				&:hover img {
+					transform: scale(1.05);
+				}
+			}
+		}
+
+		.buttonGroup {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			justify-content: center;
+			align-items: center;
+			padding: 0 20px;
+
+			a {
+				max-width: 280px;
+			}
+
+			@include respond-to("medium") {
+				flex-direction: row;
+			}
+		}
 	}
 }

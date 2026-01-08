@@ -17,8 +17,10 @@ export const isSmallWin = (results: number[]) =>
 export const isBigWin = (results: number[]) =>
 	results[0] === results[1] && results[1] === results[2];
 
-export const isRoyalFlush = (results: number[]) =>
-	results.every((index) => index >= 1 && index <= 3);
+export const isRoyalFlush = (results: number[]) => {
+	const sorted = [...results].sort((a, b) => a - b);
+	return sorted[0] === 1 && sorted[1] === 2 && sorted[2] === 3;
+};
 
 export const isJokerJackpot = (results: number[]) => {
 	return results.every((index) => index === 0);

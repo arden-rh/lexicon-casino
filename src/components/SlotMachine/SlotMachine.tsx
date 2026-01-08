@@ -18,7 +18,6 @@ import { useCoin } from "../../contexts/CoinContext";
 import ButtonLink from "../ButtonLink/ButtonLink";
 import Button from "../Button/Button";
 
-
 const SlotMachine = () => {
 	const { coins, subtractCoins, addCoins } = useCoin();
 	const [reelIndices, setReelIndices] = useState([0, 0, 0]);
@@ -110,10 +109,10 @@ const SlotMachine = () => {
 			console.log("Forcing Joker Jackpot for testing:", finalResults);
 		}
 
-		if (spinLosses.length > 0 && (spinLosses.length + 1) % 10 === 0) {
-			// Force a small win on every tenth spin
+		if (spinLosses.length === 9) {
+			// Force a small win on the 10th consecutive loss
 			finalResults[1] = finalResults[0];
-			console.log("Forcing Small Win on 10th spin:", finalResults);
+			console.log("Forcing Small Win after 9 losses:", finalResults);
 		}
 
 		// Animate spinning with rapid index changes
@@ -140,7 +139,13 @@ const SlotMachine = () => {
 
 	return (
 		<div className={styles.slotMachine}>
-			<h3>Royal Spin</h3>
+			<h3>
+				<img
+					src="src/assets/images/royal-spin-wide.png"
+					alt="Royal Spin"
+					className={styles.royalSpinImage}
+				/>
+			</h3>
 			<div className={styles.reelsContainer}>
 				<Reel
 					id={1}
@@ -158,7 +163,9 @@ const SlotMachine = () => {
 					currentIndex={reelIndices[2]}
 				/>
 			</div>
-			<div className={styles.gameMessageContainer}>{gameMessage ? gameMessage : `${SPIN_COST} 💎 / spin`}</div>
+			<div className={styles.gameMessageContainer}>
+				{gameMessage ? gameMessage : `${SPIN_COST} 💎 / spin`}
+			</div>
 			<div className={styles.controlsContainer}>
 				<div className={styles.coinDisplay}>
 					<span>{coins} 💎</span>
@@ -178,7 +185,10 @@ const SlotMachine = () => {
 					>
 						SPIN
 					</Button>
-					<Button onClick={() => setShowTest(!showTest)} className={styles.testToggle}>
+					<Button
+						onClick={() => setShowTest(!showTest)}
+						className={styles.testToggle}
+					>
 						Show Test
 					</Button>
 					{showTest && (
