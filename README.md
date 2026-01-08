@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# Casino Slots
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive slot machine game built with React, TypeScript, and Vite. Spin the reels, manage your coin balance, and try your luck at winning jackpots!
 
-Currently, two official plugins are available:
+This project is a Lexicon assignment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Interactive 3-reel slot machine with multiple symbols
+- Coin balance management system (starting with 100 coins)
+- Multiple win conditions and payout levels:
+  - **Royal Flush** (Jack, Queen, King) - 500 coins
+  - **Joker Jackpot** (Three Jokers) - Special win
+  - **Big Win** (Three matching symbols) - 100 coins
+  - **Small Win** (Two matching symbols) - 20 coins
+- Responsive design with SCSS modules
+- React Router for navigation (Home, Game, Balance)
+- TypeScript for type safety
+- Context API for global coin state management
+- Animated reel spinning effects
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React 19** with TypeScript
+- **Vite** for build tooling
+- **React Router** for routing
+- **SCSS Modules** for styling
+- **ESLint** for code quality
+- **Context API** for state management
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Install dependencies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm preview
+```
+
+## Project Structure
+
+- `src/components/` - Reusable UI components (Button, Reel, SlotMachine, Layout, etc.)
+- `src/pages/` - Page components (Home, Game, Balance)
+- `src/contexts/` - React Context providers (CoinContext)
+- `src/constants/` - Slot symbols and game constants
+- `src/styles/` - Global styles and SCSS configuration
+- `src/assets/images/` - Slot symbols and favicon images
+
+## License
+
+© 2026 Arden Haldorson
