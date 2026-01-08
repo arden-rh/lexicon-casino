@@ -9,7 +9,7 @@ const Header = () => {
 			<h1>Casino Nova</h1>
 			<nav className={styles.nav}>
 				<span className={styles.links}>
-					<a href="/">Home</a> | <a href="/game">Game</a>
+					<a href="/">Home</a><a href="/game">Game</a>
 				</span>
 				<a href="/balance" className={styles.coinBalance}>
 					<span>{coins} 💎</span>

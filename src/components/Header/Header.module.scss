@@ -2,7 +2,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 1000;
-	padding: 20px 10px 15px;
+	padding: 20px 10px 10px;
 	font-size: 1.5rem;
 	text-align: center;
 	display: flex;
@@ -15,6 +15,12 @@
 	color: #9c0202;
 	border-bottom: 3px solid #d96c0d;
 	box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
+
+	@include respond-to("medium") {
+		flex-direction: row;
+		padding: 20px 15px;
+		gap: 10px;
+	}
 
 	h1 {
 		margin: 0;
@@ -29,6 +35,10 @@
 			rgba(234, 58, 45, 1) 50%
 		);
 		box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
+
+		@include respond-to("medium") {
+			white-space: nowrap;
+		}
 	}
 
 	.nav {
@@ -39,13 +49,30 @@
 		justify-content: space-between;
 		width: 100%;
 
+		@include respond-to("medium") {
+			justify-content: flex-end;
+		}
+
 		a {
 			color: inherit;
-			margin: 0 10px;
+			text-decoration: none;
 			text-underline-offset: 0.15rem;
 
 			&:hover {
 				text-decoration: underline;
+			}
+		}
+
+		.links {
+			margin: 0 10px;
+
+			a:first-child {
+				margin-right: 15px;
+			}
+
+			@include respond-to("medium") {
+				margin: 0 20px;
+
 			}
 		}
 
@@ -58,6 +85,11 @@
 			color: #ffffff;
 			background-color: #d96c0d;
 			box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+
+			&:hover {
+				text-decoration: none;
+				filter: brightness(0.8);
+			}
 		}
 	}
 }
