@@ -58,8 +58,10 @@
 			text-decoration: none;
 			text-underline-offset: 0.15rem;
 
-			&:hover {
-				text-decoration: underline;
+			@media (hover: hover) {
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 
@@ -86,9 +88,11 @@
 			background-color: #d96c0d;
 			box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
 
-			&:hover {
-				text-decoration: none;
-				filter: brightness(0.8);
+			@media (hover: hover) {
+				&:hover {
+					text-decoration: none;
+					filter: brightness(0.8);
+				}
 			}
 		}
 	}

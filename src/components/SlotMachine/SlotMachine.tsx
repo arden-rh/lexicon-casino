@@ -40,7 +40,7 @@ const SlotMachine = () => {
 		if (isJokerJackpot(results)) {
 			const jokerMultiplier = Math.floor(Math.random() * 10) + 2;
 			const jokerWinPayout = BIG_WIN_PAYOUT * jokerMultiplier;
-			const jokerJackpotMessage = `Incredible! Joker Jackpot! Win multiplied by ${jokerMultiplier}! You win ${jokerWinPayout} coins!`;
+			const jokerJackpotMessage = `Joker Jackpot! Win multiplied by ${jokerMultiplier}! You win ${jokerWinPayout}!`;
 			console.log(jokerJackpotMessage);
 			setGameMessage(jokerJackpotMessage);
 			addCoins(jokerWinPayout);
@@ -95,7 +95,7 @@ const SlotMachine = () => {
 
 		if (isRoyalFlushTest) {
 			// Force a royal flush for testing
-			finalResults[0] = 1; // Assuming indices 1, 2, 3 represent a royal flush
+			finalResults[0] = 1;
 			finalResults[1] = finalResults[0] + 1;
 			finalResults[2] = finalResults[0] + 2;
 			console.log("Forcing Royal Flush for testing:", finalResults);
@@ -103,7 +103,7 @@ const SlotMachine = () => {
 
 		if (isJokerJackpotTest) {
 			// Force a joker jackpot for testing
-			finalResults[0] = 0; // Assuming index 0 represents the joker
+			finalResults[0] = 0;
 			finalResults[1] = 0;
 			finalResults[2] = 0;
 			console.log("Forcing Joker Jackpot for testing:", finalResults);

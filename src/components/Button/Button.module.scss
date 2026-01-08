@@ -25,7 +25,9 @@
 		cursor: not-allowed;
 	}
 
-	&:hover:not(:disabled) {
-		filter: brightness(0.85);
+	@media (hover: hover) {
+		&:hover:not(:disabled) {
+			filter: brightness(0.85);
+		}
 	}
 }
