@@ -12,7 +12,7 @@ const Home = () => {
 			<div className={styles.linkContainer}>
 				<div className={styles.imageLinks}>
 					<a
-						href="/game"
+						href="/game#royal-spin"
 						className={styles.imageLink}
 						title="Link to Royal Spin game"
 						aria-label="Link to Royal Spin"

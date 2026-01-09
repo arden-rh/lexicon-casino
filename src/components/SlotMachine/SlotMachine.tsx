@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Confetti from "react-confetti";
 import Reel from "../Reel/Reel";
 import styles from "./SlotMachine.module.scss";
 import {
@@ -20,10 +21,12 @@ import Button from "../Button/Button";
 
 const SlotMachine = () => {
 	const { coins, subtractCoins, addCoins } = useCoin();
+	const slotMachineRef = useRef<HTMLDivElement>(null);
 	const [reelIndices, setReelIndices] = useState([0, 0, 0]);
 	const [isSpinning, setIsSpinning] = useState(false);
 	const [showTest, setShowTest] = useState(false);
 	const [gameMessage, setGameMessage] = useState<string>("");
+	const [showConfetti, setShowConfetti] = useState(false);
 
 	// Track spins to make sure every tenth spin is a small win
 	const [spinLosses, setSpinLosses] = useState<boolean[]>([]);
@@ -34,6 +37,8 @@ const SlotMachine = () => {
 			setGameMessage(royalFlushMessage);
 			addCoins(ROYAL_FLUSH_PAYOUT);
 			setSpinLosses([]); // Reset spin losses after jackpot
+			setShowConfetti(true);
+			setTimeout(() => setShowConfetti(false), 5000);
 			return true;
 		}
 
@@ -45,6 +50,8 @@ const SlotMachine = () => {
 			setGameMessage(jokerJackpotMessage);
 			addCoins(jokerWinPayout);
 			setSpinLosses([]); // Reset spin losses after joker jackpot
+			setShowConfetti(true);
+			setTimeout(() => setShowConfetti(false), 5000);
 			return true;
 		}
 
@@ -53,6 +60,8 @@ const SlotMachine = () => {
 			setGameMessage(bigWinMessage);
 			addCoins(BIG_WIN_PAYOUT);
 			setSpinLosses([]); // Reset spin losses after big win
+			setShowConfetti(true);
+			setTimeout(() => setShowConfetti(false), 5000);
 			return true;
 		}
 
@@ -138,7 +147,21 @@ const SlotMachine = () => {
 	};
 
 	return (
-		<div className={styles.slotMachine}>
+		<div className={styles.slotMachine} id="royal-spin" ref={slotMachineRef}>
+			{showConfetti && slotMachineRef.current && (
+				<Confetti
+					width={window.innerWidth}
+					height={window.innerHeight}
+					recycle={false}
+					numberOfPieces={300}
+					confettiSource={{
+						x: slotMachineRef.current.offsetLeft + slotMachineRef.current.offsetWidth / 2 - 50,
+						y: slotMachineRef.current.offsetTop,
+						w: 100,
+						h: 0
+					}}
+				/>
+			)}
 			<h3>
 				<img
 					src="src/assets/images/royal-spin-wide.png"
