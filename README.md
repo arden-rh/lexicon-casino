@@ -29,7 +29,8 @@ This project is a Lexicon assignment.
 - **Context API** for state management
 
 ## Live Site
-[View the live casino site](https://arh-lexicon-casino.netlify.app/)
+
+[View the live casino site](https://arh-lexicon-casino.netlify.app)
 
 ## Getting Started (for local testing)
 
