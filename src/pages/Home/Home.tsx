@@ -1,5 +1,8 @@
 import ButtonLink from "@/components/ButtonLink/ButtonLink";
 import styles from "./Home.module.scss";
+import royalSpinCard from "@/assets/images/royal-spin-card.png";
+import jungleRumbleCard from "@/assets/images/jungle-rumble-card.png";
+import pirateIslandCard from "@/assets/images/pirate-island-card.png";
 
 const Home = () => {
 	return (
@@ -18,7 +21,7 @@ const Home = () => {
 						aria-label="Link to Royal Spin"
 					>
 						<img
-							src="src/assets/images/royal-spin-card.png"
+							src={royalSpinCard}
 							alt="Royal Spin"
 						/>
 					</a>
@@ -29,7 +32,7 @@ const Home = () => {
 						aria-label="Link to Jungle Rumble"
 					>
 						<img
-							src="src/assets/images/jungle-rumble-card.png"
+							src={jungleRumbleCard}
 							alt="Jungle Rumble"
 						/>
 					</a>
@@ -40,7 +43,7 @@ const Home = () => {
 						aria-label="Link to Pirate Island"
 					>
 						<img
-							src="src/assets/images/pirate-island-card.png"
+							src={pirateIslandCard}
 							alt="Pirate Island"
 						/>
 					</a>

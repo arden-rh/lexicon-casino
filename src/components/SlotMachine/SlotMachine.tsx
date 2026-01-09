@@ -17,6 +17,7 @@ import {
 import { useCoin } from "../../contexts/CoinContext";
 import ButtonLink from "../ButtonLink/ButtonLink";
 import Button from "../Button/Button";
+import royalSpinWide from "@/assets/images/royal-spin-wide.png";
 
 const SlotMachine = () => {
 	const { coins, subtractCoins, addCoins } = useCoin();
@@ -141,7 +142,7 @@ const SlotMachine = () => {
 		<div className={styles.slotMachine}>
 			<h3>
 				<img
-					src="src/assets/images/royal-spin-wide.png"
+					src={royalSpinWide}
 					alt="Royal Spin"
 					className={styles.royalSpinImage}
 				/>
