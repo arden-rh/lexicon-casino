@@ -28,7 +28,10 @@ This project is a Lexicon assignment.
 - **ESLint** for code quality
 - **Context API** for state management
 
-## Getting Started
+## Live Site
+[View the live casino site](https://arh-lexicon-casino.netlify.app/)
+
+## Getting Started (for local testing)
 
 ### Install dependencies
 
